@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Sidebar from './components/Sidebar.jsx';
+import '../dist/test.css';
 
-import '../dist/style.css';
+const data = JSON.parse(document.getElementById('data').value.replace(/\'/g, '"'));
 
-ReactDOM.render(<Sidebar name="sidebar"/>, document.getElementById('apateezSidebar'));
+ReactDOM.hydrate(<Sidebar
+  data={[data]}
+/>, document.getElementById('apateezSidebar'));
 
