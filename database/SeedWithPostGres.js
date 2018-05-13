@@ -1,6 +1,10 @@
 const pgp = require('pg-promise')({
   capSQL: true, // generate capitalized SQL
 });
+
+pgp.pg.defaults.poolSize = 20;
+
+console.log(pgp.pg.defaults.poolSize)
 const faker = require('faker');
 
 
@@ -66,7 +70,6 @@ function getNextData(t, pageIndex) {
           `Friday: ${amRandom}:00 AM - ${pmRandomizer}:00 PM`,
           `Saturday: ${amRandom}:00 AM - ${randomizer}:00 PM`,
           'Sunday: Closed'],
-        location: `locat${latitude}`,
         url: 'url',
         phone: 'phone',
         lat: latitude,
