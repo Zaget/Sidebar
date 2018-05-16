@@ -1,16 +1,45 @@
 const webpack = require('webpack');
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 const SRC_DIR = path.join(__dirname, '/client/src');
 const DIST_DIR = path.join(__dirname, '/client/dist');
 
-module.exports = {
+module.exports = [{
+  entry: path.resolve(__dirname, '.', 'server/server.js'),
+  output: {
+    path: path.resolve(__dirname, '.', 'dist'),
+    publicPath: '/dist/',
+    filename: 'server.js',
+  },
+  target: 'node',
+  externals: nodeExternals(),
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'isomorphic-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+        ],
+      },
+    ],
+  }
+},
+{
   plugins: [
-    new webpack.DefinePlugin({
-      //       BASE_URL: JSON.stringify('http://34.217.176.3:3001'),
-
-      BASE_URL: JSON.stringify('http://localhost:3001'),
-    }),
+  new webpack.DefinePlugin({
+    BASE_URL: JSON.stringify('http://localhost:3001'),
+  })
   ],
   entry: `${SRC_DIR}/index.jsx`,
   output: {
@@ -24,7 +53,7 @@ module.exports = {
         include: SRC_DIR,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015'],
+          presets: ['react', 'env'],
         },
       },
       {
@@ -38,4 +67,5 @@ module.exports = {
       react: path.resolve(__dirname, 'node_modules', 'react'),
     },
   },
-};
+},
+];
