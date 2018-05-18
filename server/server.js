@@ -8,13 +8,13 @@ import path from 'path';
 
 const app = express();
 
-const DIST_DIR = path.join(__dirname, '/client/dist');
+const DIST_DIR = path.join(__dirname, '../client/dist');
 const port = process.env.PORT || 3001;
 const db = require('../database/indexPostGres');
 
 db.connect();
 
-app.use(express.static('/Users/mrmac/ericCartman/FinalDrafts/Sidebar-Server/client/dist/'));
+app.use(express.static(DIST_DIR));
 
 app.get('/restaurants/:id', (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
