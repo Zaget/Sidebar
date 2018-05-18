@@ -40,13 +40,8 @@ module.exports = [{
   }
 },
 {
-  plugins: [
-  new webpack.DefinePlugin({
-    BASE_URL: JSON.stringify('http://localhost:3001'),
-  })
-  ],
   entry: `${SRC_DIR}/index.jsx`,
-    node: {
+  node: {
     __dirname: false,
     __filename: false,
   },
