@@ -1,13 +1,6 @@
-# Apateez Sidebar
+# Zaget Sidebar
 
-> A clone of Zagat's restaurant page sidebar.
-
-## Related Projects
-
-  - https://github.com/apateez/reviews
-  - https://github.com/apateez/nearby
-  - https://github.com/apateez/proxy-Pooja
-  - https://github.com/apateez/gallery
+> A clone of Zagat's restaurant page sidebar. 
 
 ## Table of Contents
 
@@ -35,8 +28,7 @@ npm run build
 - React-DOM
 - Webpack
 - Babel CLI
-- MongoDB
-- Mongoose
+- Postgres
 
 
 ## Development
