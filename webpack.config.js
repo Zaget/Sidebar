@@ -12,6 +12,10 @@ module.exports = [{
     publicPath: '/dist/',
     filename: 'server.js',
   },
+  node: {
+    __dirname: false,
+    __filename: false,
+  },
   target: 'node',
   externals: nodeExternals(),
   module: {
@@ -36,12 +40,11 @@ module.exports = [{
   }
 },
 {
-  plugins: [
-  new webpack.DefinePlugin({
-    BASE_URL: JSON.stringify('http://localhost:3001'),
-  })
-  ],
   entry: `${SRC_DIR}/index.jsx`,
+  node: {
+    __dirname: false,
+    __filename: false,
+  },
   output: {
     filename: 'bundle.js',
     path: DIST_DIR,
